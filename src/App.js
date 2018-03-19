@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Articles from './containers/articlesContainer';
+import CreateArticle from './containers/createArticleContainer';
 import { Provider } from 'react-redux';
 import { store } from './store';
 
@@ -15,6 +16,7 @@ class App extends Component {
               <a className="navbar-brand" href="">Navbar</a>
             </div>
           </nav>
+          <CreateArticle></CreateArticle>
           <Articles></Articles>
         </div>
       </Provider>
