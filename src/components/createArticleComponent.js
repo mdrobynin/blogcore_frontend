@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './createArticleComponent.css';
 
 export class CreateArticleComponent extends Component {
     constructor(props) {
@@ -28,7 +29,7 @@ export class CreateArticleComponent extends Component {
 
     onSubmit(e) {
         e.preventDefault();
-        
+
         if (this.state.text && this.state.title) {
             this.props.createArticle(this.state);
             this.setState({
@@ -42,26 +43,18 @@ export class CreateArticleComponent extends Component {
     render() {
         return (
             <div className="container">
-                <div className="row">
-                    <div className="col-md-3">
-                        <h4>Title</h4>
-                    </div>
-                    <div className="col-md-6">
-                        <input className="form-control" type="text" value={this.state.title} onChange={this.onTitleChange}></input>
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col-md-3">
-                        <h4>Text</h4>
-                    </div>
-                    <div className="col-md-6">
-                        <input className="form-control" type="text" value={this.state.text} onChange={this.onTextChange}></input>
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col-md-3">
-                        <input className="btn btn-primary" type="submit" value="Add Article" onClick={this.onSubmit}></input>
-                    </div>
+                <div className="create-article-container">
+                    <form>
+                        <div className="form-group">
+                            <label htmlFor="articleTitleInput">Title</label>
+                            <input id="articleTitleInput" className="form-control" type="text" value={this.state.title} onChange={this.onTitleChange}></input>
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="articleTextInput">Text</label>
+                            <input id="articleTextInput" className="form-control" type="text" value={this.state.text} onChange={this.onTextChange}></input>
+                        </div>
+                        <button type="submit" className="btn btn-primary" onClick={this.onSubmit}>Add Article</button>
+                    </form>
                 </div>
             </div>
         );

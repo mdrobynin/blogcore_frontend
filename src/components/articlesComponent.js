@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { ArticleComponent } from './articleComponent'
 
 export class ArticlesComponent extends Component {
     componentWillMount() {
@@ -6,18 +7,9 @@ export class ArticlesComponent extends Component {
     }
 
     render() {
-        //{id: 1, userId: 1, imagePath: "", text: "text", title: ""}
-        
         const articles = this.props.articles.map(article => {
             return (
-                <div className="row" key={article.id}>
-                    <div className="col-md-12">
-                        <h3> {article.title} </h3>
-                        <p>
-                            {article.text}
-                        </p>
-                    </div>
-                </div>
+                <ArticleComponent key={article.id} article={article} onDelete={this.props.deleteArticle}></ArticleComponent>
             );
         });
 

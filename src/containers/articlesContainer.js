@@ -1,13 +1,14 @@
 import { connect } from 'react-redux';
 import { ArticlesComponent } from '../components/articlesComponent';
-import { fetchArticles } from '../actions/articlesActions';
+import { fetchArticles, deleteArticle } from '../actions/articlesActions';
 
 const mapStateToProps = (state, ownProps) => ({
     articles: state.articles
 });
 
 const mapDispatchToProps = {
-    fetchArticles
+    fetchArticles,
+    deleteArticle
 };
 
 export default connect(

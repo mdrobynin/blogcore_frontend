@@ -1,15 +1,8 @@
-import { FETCH_ARTICLES } from './types';
+import { FETCH_ARTICLES, CHANGE_ARTICLE } from './types';
 import { articlesUrl } from '../config';
 
 export const fetchArticles = () => dispatch => {
-    fetch(articlesUrl)
-        .then(res => res.json())
-        .then(articles => {
-            dispatch({
-                type: FETCH_ARTICLES,
-                payload: articles
-            });
-        });
+    requestArticles(dispatch);
 };
 
 export const createArticle = articleData => dispatch => {
@@ -23,14 +16,30 @@ export const createArticle = articleData => dispatch => {
         .then(res => res.json())
         .then((res) => {
             console.log('articleActions->createArticle', res);
-            
-            fetch(articlesUrl)
-                .then(res => res.json())
-                .then(articles => {
-                    dispatch({
-                        type: FETCH_ARTICLES,
-                        payload: articles
-                    });
-                });
+
+            requestArticles(dispatch);
         });
 };
+
+export const deleteArticle = articleId => dispatch => {
+    fetch(`${articlesUrl}/${articleId}`, {
+        method: 'DELETE'
+    })
+        .then(res => res.json())
+        .then((res) => {
+            console.log('articleActions->deleteArticle', res);
+
+            requestArticles(dispatch);
+        });
+}
+
+function requestArticles(dispatch) {
+    fetch(articlesUrl)
+        .then(res => res.json())
+        .then(articles => {
+            dispatch({
+                type: FETCH_ARTICLES,
+                payload: articles
+            });
+        });
+}
