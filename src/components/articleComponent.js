@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import CreateComment from '../containers/createCommentContainer';
+import Comment from '../containers/commentContainer'
 import './articleComponent.css';
 
 export class ArticleComponent extends Component {
@@ -19,7 +21,11 @@ export class ArticleComponent extends Component {
     
     render() {
         const article = this.props.article;
-        console.log(article );
+        const comments = article.comments.map(comment => {
+            return (
+                <Comment key={comment.id} comment={comment}></Comment>
+            );
+        });
         return (
             <div className="card-container">
                 <div className="card">
@@ -31,6 +37,8 @@ export class ArticleComponent extends Component {
                         </p>
                         <button className="btn btn-primary card-button" onClick={this.onEdit}>Edit</button>
                         <button className="btn btn-danger card-button" onClick={this.onDelete}>Delete</button>
+                        {comments}
+                        <CreateComment article={article}></CreateComment>
                     </div>
                 </div>
             </div>

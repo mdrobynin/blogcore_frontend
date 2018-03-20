@@ -1,4 +1,4 @@
-import { FETCH_ARTICLES, CHANGE_ARTICLE } from './types';
+import { FETCH_ARTICLES } from './types';
 import { articlesUrl } from '../config';
 
 export const fetchArticles = () => dispatch => {

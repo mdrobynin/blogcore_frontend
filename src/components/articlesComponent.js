@@ -9,13 +9,16 @@ export class ArticlesComponent extends Component {
     render() {
         const articles = this.props.articles.map(article => {
             return (
-                <ArticleComponent key={article.id} article={article} onDelete={this.props.deleteArticle}></ArticleComponent>
+                <ArticleComponent
+                    key={article.id}
+                    article={article}
+                    onDelete={this.props.deleteArticle}></ArticleComponent>
             );
         });
 
         return (
             <div className="container">
-                { articles }
+                {articles}
             </div>
         );
     }
